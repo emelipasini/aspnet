@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Identity.Models;
 
 namespace IdentitySample.Models
 {
@@ -11,12 +12,12 @@ namespace IdentitySample.Models
     public class ApplicationUser : IdentityUser
     {
         [Required]
-        [Display (Name = "Nombre")]
+        [Display (Name = "Firstname")]
         [StringLength (20, MinimumLength = 2)]
         public string Firstname { get; set; }
 
         [Required]
-        [Display(Name = "Apellido")]
+        [Display(Name = "Lastname")]
         [StringLength(20, MinimumLength = 2)]
         public string Lastname { get; set; }
 
@@ -38,10 +39,11 @@ namespace IdentitySample.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
+        public ApplicationDbContext() : base("DefaultConnection", throwIfV1Schema: false) { }
+
+        public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Project> Project { get; set; }
+        public virtual DbSet<Client> Client { get; set; }
 
         static ApplicationDbContext()
         {

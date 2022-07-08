@@ -65,12 +65,12 @@ namespace IdentitySample.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "Nombre")]
+        [Display(Name = "Firstname")]
         [StringLength(20, MinimumLength = 2)]
         public string Firstname { get; set; }
 
         [Required]
-        [Display(Name = "Apellido")]
+        [Display(Name = "Lastname")]
         [StringLength(20, MinimumLength = 2)]
         public string Lastname { get; set; }
 
