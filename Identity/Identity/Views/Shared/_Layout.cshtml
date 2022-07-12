@@ -24,11 +24,17 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
+                        <li>@Html.ActionLink("Projects", "Index", "Projects")</li>
+                    }
+
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
+                        <li>@Html.ActionLink("Employees", "Index", "Employees")</li>
                         <li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
                         <li>@Html.ActionLink("Users", "Index", "UsersAdmin")</li>
-                        <li>@Html.ActionLink("Employees", "Index", "Employees")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
